@@ -1,0 +1,17 @@
+{
+  "project_name": "kratos-v3",
+  "dataset_dir": "../dataset/kratos-dataset-v1/",
+  "dataset_path": "../dataset/kratos-dataset-v1/kratos-dataset.txt",
+  "weights": "../vgg16.npy",
+  "num_epochs": 20,
+  "num_iter_per_epoch": 10,
+  "num_iter_per_eval": 3,
+  "skip_step": 20,
+  "learning_rate": 0.001,
+  "momentum": 0.9,
+  "batch_size": 16,
+  "image_shape": 128,
+  "image_channels": 3,
+  "max_to_keep":5,
+  "num_classes": 4
+}

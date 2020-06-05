@@ -1,0 +1,19 @@
+Docker dependencies:
+
+A. Install nvidia-docker:
+	1. github: https://github.com/NVIDIA/nvidia-docker
+	2. curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+	sudo apt-key add -
+	3. distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+	4. curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
+	sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+	5. sudo apt-get update
+	6. sudo apt-get install -y nvidia-docker2
+	7. sudo pkill -SIGHUP dockerd
+	8. docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
+
+B. Pull tensorflow serving: 
+	- docker pull tensorflow/serving:latest-gpu
+
+C. Create new container and run:
+	- docker run --runtime=nvidia -p 8501:8501 --name kratos_serve --mount type=bind,source=/home/richardadiguna17/kratos-project/savedmodel,target=/models/kratos -e MODEL_NAME=kratos -t tensorflow/serving:latest-gpu
